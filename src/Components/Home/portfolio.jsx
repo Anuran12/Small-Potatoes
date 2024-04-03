@@ -70,41 +70,53 @@ export default function Portfolio() {
           <div className="mb-10 w-full relative pot-margin">
             {/* <div className='bg-[#000210] lg:w-[2rem] 2xl:w-[15rem] absolute h-full right-0 z-10 lg:block hidden select-none pointer-events-auto'></div> */}
             <Swiper
-                        slidesPerView={3}
-                        spaceBetween={0}
-                        loop={true}
-                        speed={3000}
-                        noSwiping={true}
-                        noSwipingClass='swiper-wrapper'
-                        autoplay={{
-                            delay: 0,
-                            disableOnInteraction: false,
-                        }}
-                        breakpoints={{
-                            0: {
-                                slidesPerView: 1.25,
-                            },
-                            500: {
-                                slidesPerView: 1.5,
-                            },
-                            865: {
-                                slidesPerView: 2.25,
-                            },
-                            1500: {
-                                slidesPerView: 3
-                            },
-                        }}
-                        modules={[Autoplay]}
-                        className='flex gap-2 w-full items-center justify-center mySwiper relative'>
-
-                          {PortFolio.slice(4,8).map((data, index) => (
-                            <SwiperSlide className='w-full flex items-center justify-center' key={data.id} >
-                                <div className="cursor-pointer overflow-hidden transition-all duration-150 ease-in relative w-full mx-6 md:mx-0 portfolio-card">
-                    <img src={data.img} alt={data.name} className="w-full" />
+              slidesPerView={3}
+              spaceBetween={0}
+              loop={true}
+              // slideToClickedSlide={true}
+              speed={540}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1.25,
+                  spaceBetween: 20,
+                },
+                500: {
+                  slidesPerView: 1.5,
+                },
+                600: {
+                  slidesPerView: 2.25,
+                },
+                1200: {
+                  slidesPerView: 2.5,
+                },
+                1500: {
+                  slidesPerView: 3,
+                  spaceBetween: 35
+                }
+              }}
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              navigation={{
+                prevEl: '.your-prev-button-class',
+                nextEl: '.your-next-button-class',
+              }}
+              modules={[Autoplay, Navigation]}
+              className="relative"
+              onSwiper={(swiperInstance) => {
+                swiper = swiperInstance;
+              }}
+            >
+              {PortFolio.slice(0, 4).map((data, index) => (
+                <SwiperSlide key={index} onClick={() => CardActive(index)}>
+                  <div ref={cardRefs[index]} className="cursor-pointer overflow-hidden transition-all duration-150 ease-in relative w-full mx-6 md:mx-0 portfolio-card">
+                    <img src={data.img} alt="Kagan" className="w-full" />
                     <h1 className='w-[calc(100%-50px)] py-2 absolute z-30 bottom-4 left-1/2
                             -translate-x-1/2
                             text-white font-extrabold'>{data.name}</h1>
-                    <a href={data.GoTo} target='_blank'>
+                    <a href={data.GoTo} target='_blank' className={`${data.GoTo ? '': 'goto'}`}>
                       <p
                         className={` w-[calc(100%-50px)] py-2 absolute z-10 bottom-4 left-1/2 flex gap-2 items-center
                             -translate-x-1/2
@@ -121,10 +133,13 @@ export default function Portfolio() {
                       </p>
                     </a>
                   </div>
-
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="flex items-center justify-center gap-x-8 2xl:pt-0 pt-6 2xl:absolute -top-24 z-20 right-0">
+              <Icon icon="gravity-ui:arrow-up" className="your-prev-button-class rotate-[270deg] text-3xl cursor-pointer text-[#BABABA] hover:text-white transition-all" onClick={handlePrevClick} />
+              <Icon icon="gravity-ui:arrow-up" className="your-next-button-class rotate-[90deg] text-3xl cursor-pointer text-[#BABABA] hover:text-white transition-all" onClick={handleNextClick} />
+            </div>
           </div>
         </div>
         <div className={`${styles.maxWidth} w-full pt-4 md:pt-16 md:pb-16 pb-10 text-left work-sans relative`}>
