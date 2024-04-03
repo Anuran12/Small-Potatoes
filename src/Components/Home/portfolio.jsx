@@ -95,7 +95,7 @@ export default function Portfolio() {
                 }
               }}
               autoplay={{
-                delay: 0,
+                delay: 3225,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
