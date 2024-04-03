@@ -146,7 +146,9 @@ body {
         height: 20px;
     }
 }
-
+.portfolio-card{
+    scale: 0.85;
+}
 .portfolio-card::before {
     content: "";
     position: absolute;
@@ -220,4 +222,9 @@ body {
 
 .your-prev-button-class:hover, .your-next-button-class:hover{
     color: #FE983B !important;
+}
+
+
+.goto{
+    display: none;
 }

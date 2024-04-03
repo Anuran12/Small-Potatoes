@@ -6,21 +6,21 @@ const PortFolio = [
         img: Greenling,
         name: "Greenling",
         Colors: "bg-[#FE983B]",
-        GoTo: '#'
+        // GoTo: '#'
     },
     {
         id: 2,
         img: NurturMe,
         name: "NurturMe",
         Colors: "bg-[#FE983B]",
-        GoTo: '#'
+        // GoTo: '#'
     },
     {
         id: 3,
         img: Ceces,
         name: "Cece's Veggie Co.",
         Colors: "bg-[#FE983B]",
-        GoTo: '#',
+        // GoTo: '#',
         
     },
     {
